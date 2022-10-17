@@ -27,19 +27,19 @@
 ## do make sure to use different ranges of numbers for each condition.
 ## This specific command will launch 10 jobs, with array indices
 ## 990, 991, 992, 993, 994, 995, 996, 997, 998, and 999.
-#SBATCH --array=10000-10009
+#SBATCH --array=10010-10019
 ​
 ​
 ## We're running this on scratch because that's what ICER prefers
 ## Remember to copy your results to your home directory once they're
 ## done so that they don't get deleted
-cd /mnt/scratch/croftcon/symbulation_directory/data/donation_rate/PGG_synergy_100
+cd /mnt/scratch/millsaus/SymbulationExperiments/SymbulationProjects/PGG100_Normal
 ​
 ## Make a directory for this condition
 ## (this line will throw an error once the directory exists, but
 ## that's harmless)
-mkdir random_donation_rate
-cd random_donation_rate
+mkdir normal_donation_rate
+cd normal_donation_rate
 ​
 ## Make a directory for this random seed
 mkdir ${SLURM_ARRAY_TASK_ID}
@@ -52,11 +52,11 @@ cd ${SLURM_ARRAY_TASK_ID}
 ## executable over the course of this project it's okay to have a single
 ## copy of it that you always reference.
 ## Really, though, what are the odds you're never going to change it?
-cp /mnt/home/croftcon/SymbulationEmp/symbulation_pgg .
-cp /mnt/home/croftcon/SymbulationEmp/SymSettings.cfg .
+cp /mnt/home/millsaus/SymbulationEmp/symbulation_pgg .
+cp /mnt/home/millsaus/SymbulationEmp/SymSettings.cfg .
 ​
 ## Actually run your program. Set the random seed to the array id
 ## and make sure to set whatever other command-line arguments are necessary
-./symbulation_pgg -SEED ${SLURM_ARRAY_TASK_ID} -SYM_LIMIT 100 -PGG_SYNERGY 10 -UPDATES 50000 -PHYLOGENY 1 -PGG 1 -PGG_DONATE_RANDOM 1 > run.log
+./symbulation_pgg -SEED ${SLURM_ARRAY_TASK_ID} -SYM_LIMIT 100 -PGG_SYNERGY 100 -UPDATES 100000 -PHYLOGENY 1 -PGG 1 -PGG_DONATE_NORMAL 1 -PGG_DONATE_NORMAL_MEAN 0.5 -PGG_DONATE_NORMAL_STD 0.167 > run.log
 ​
 ## If you need to do anything after your run, it can go here.
