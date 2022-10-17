@@ -52,8 +52,8 @@ cd ${SLURM_ARRAY_TASK_ID}
 ## executable over the course of this project it's okay to have a single
 ## copy of it that you always reference.
 ## Really, though, what are the odds you're never going to change it?
-cp /mnt/home/millsaus/SymbulationEmp/symbulation_pgg .
-cp /mnt/home/millsaus/SymbulationEmp/SymSettings.cfg .
+cp /mnt/home/millsaus/SymbulationProjects/SymbulationEmp/symbulation_pgg .
+cp /mnt/home/millsaus/SymbulationProjects/SymbulationEmp/SymSettings.cfg .
 ​
 ## Actually run your program. Set the random seed to the array id
 ## and make sure to set whatever other command-line arguments are necessary
